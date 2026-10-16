@@ -326,10 +326,10 @@ nav .right a span {
 ======================================== */
 
 .projects-container {
-    max-width: 1150px;
+    max-width: 900px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
     align-items: stretch;
 }
@@ -384,21 +384,42 @@ nav .right a span {
     font-weight: 600;
 }
 
-.project-link {
+/* Project buttons */
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.project-actions .project-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    margin-top: auto;
+    padding: 10px 12px;
+    border: 1px solid var(--link-color);
+    border-radius: 6px;
     color: var(--link-color);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    transition: color 0.2s;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s,
+                transform 0.3s;
 }
 
-.project-link:hover {
-    color: var(--text-color);
+.project-actions .project-link:hover {
+    background-color: var(--link-color);
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
+.project-actions .project-link:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 4px;
+}
 
 /* ========================================
    8. Contact Section
@@ -608,7 +629,7 @@ body.dark-mode .form-group textarea::placeholder {
 }
 
 /* Dark mode navigation */
-body.dark-mode nav .right a:last-child {
+body.dark-mode nav .right a[href^="mailto:"] {
     background-color: var(--text-color);
     color: var(--background-color);
 }
@@ -682,14 +703,10 @@ nav a.active,
 /* ========================================
    15. Tablet Layout
 ======================================== */
-
 @media (max-width: 900px) {
     .projects-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .project-card {
-        min-width: 0;
+        gap: 20px;
     }
 
     .contact-container {
@@ -826,6 +843,16 @@ nav a.active,
 
     .project-card {
         padding: 22px;
+    }
+
+    .project-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-actions .project-link {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .contact-info,
